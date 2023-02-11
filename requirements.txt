@@ -1,0 +1,6 @@
+fitz
+pdfplumber
+PyMuPDF
+requests
+selenium
+undetected_chromedriver
