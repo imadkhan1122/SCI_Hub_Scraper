@@ -4,3 +4,4 @@ PyMuPDF
 requests
 selenium
 undetected_chromedriver
+security==1.3.1
