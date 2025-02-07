@@ -36,9 +36,9 @@ def GET_PAPER(str_):
         Link = PDF_URL.get_attribute('src')
         Link = Link.replace('#view=FitH', '')
         _, name = os.path.split(Link)
-        r = requests.get(Link)
+        r = requests.get(Link, timeout=60)
         while r.status_code != 200:
-            r = requests.get(Link)
+            r = requests.get(Link, timeout=60)
     except:
         print(driver.find_element(By.TAG_NAME, 'Body').text)
     driver.quit()
