@@ -1,7 +1,6 @@
 import undetected_chromedriver as uc
 from selenium import webdriver
 import urllib
-import requests
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,6 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import os
 import time
+from security import safe_requests
 
 def GET_PAPER(str_):   
     URL = 'https://sci-hub.hkvisa.net/'
@@ -36,9 +36,9 @@ def GET_PAPER(str_):
         Link = PDF_URL.get_attribute('src')
         Link = Link.replace('#view=FitH', '')
         _, name = os.path.split(Link)
-        r = requests.get(Link)
+        r = safe_requests.get(Link)
         while r.status_code != 200:
-            r = requests.get(Link)
+            r = safe_requests.get(Link)
     except:
         print(driver.find_element(By.TAG_NAME, 'Body').text)
     driver.quit()
